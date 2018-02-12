@@ -1,6 +1,7 @@
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Observable;
 
-public class WeatherData implements Subject {
+public class WeatherData extends Observable {
 	
 	// No subject ni observer, observable, notify out
 	
@@ -9,8 +10,42 @@ public class WeatherData implements Subject {
 	private float pressure;
 	private float humidity;
 
+	public WeatherData(){}
+	
+	public void register(Observer ob){
+		obs.add(ob);
+	}
+	
+	public void remove(Observer ob){
+		int i = obs.indexOf(ob);
+		if(i >= 0){
+			obs.remove(i);
+		}
+	}
+	
+	public void notif(Observer ob){
+		for(Observer obs : obs){
+			obs.Update(temperature, humidity, pressure);
+		}
+	}
+	
 	public void measurementChanged(){
+		setChanged();
 		notif();
+	}
+	
+	public void setMeasurement(float temp, float hum, float press){
+		this.temperature = temp;
+		this.humidity = hum;
+		this.pressure = press;
+		
+		measurementChanged();
+	}
+	public void Set(float temp, float humi, float press){
+		this.temperature = temp;
+		this.humidity = humi;
+		this.pressure = press;
+		measurementChanged();
 	}
 	
 	public float getTemp(){
@@ -21,7 +56,7 @@ public class WeatherData implements Subject {
 		return pressure;
 	}
 	
-	public float Hum(){
+	public float getHum(){
 		return humidity;
 	}
 	
@@ -52,23 +87,6 @@ public class WeatherData implements Subject {
 		this.obs = obs;
 	}
 	
-	public WeatherData(){
-		obs = new ArrayList<Observer>();
-	}
-	
-	public void register(Observer ob){
-		obs.add(ob);
-	}
-	
-	public void remove(Observer ob){
-		obs.remove(ob);
-	}
-	
-	public void notif(Observer ob){
-		for(Observer obs : obs){
-			obs.Update(temperature, humidity, pressure);
-		}
-	}
 	
 	
 }
