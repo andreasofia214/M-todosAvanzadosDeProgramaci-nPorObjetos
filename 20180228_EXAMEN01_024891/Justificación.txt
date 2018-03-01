@@ -1,0 +1,10 @@
+Los bancos se conectarán a la interfaz Banco, el cual se hará cargo de las 
+transacciones llevadas a cabo por los usuarios. Conectar todos los bancos a una interfaz
+es más lógico ya que compartirán las mismas propiedades a excepción de los datos personales
+del usuario requeridos por cada banco. 
+
+El usuario llevará a cabo la transacción haciendo que esta misma cuente con un destinatario
+y un sender (rol del usuario), así como el formato en el que fue enviado, 
+dependiendo del banco del usuario. Si el formato es diferente al aceptado por el banco
+mostrará el mensaje de que este es diferente y hara la conversión.
+
