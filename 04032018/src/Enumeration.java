@@ -1,4 +1,7 @@
 
-public class Enumeration<T> {
+public interface Enumeration {
+	
+	public boolean hasMoreElements();
+	public boolean nextElement();
 
 }
