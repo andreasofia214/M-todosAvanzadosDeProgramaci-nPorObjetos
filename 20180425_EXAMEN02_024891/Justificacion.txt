@@ -1,0 +1,7 @@
+El robot avanzado contara con un Id unico el y pedira ordenas a un task con un estado booleano para saber si es que el mismo tiene un task o no.
+Debera tener un Date para el Log. 
+
+La lista sera un Array de tasks el cual añadira mas tareas y tendra los estados de las mismas.
+Las tareas solo tienen el due date o date y su estado update. 
+
+Así el robot e comunica con la lista como intermediario tomando tareas de los tasks y no interferiria al añadir nuevas tasks.
